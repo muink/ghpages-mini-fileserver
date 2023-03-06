@@ -20,6 +20,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 </style>
+<title id="title"></title>
 </head>
 <body>
 <h1 id="path"></h1>
@@ -43,6 +44,20 @@ ghpages fileserver v1.0
 </body>
 
 <script>
-document.getElementById('path').innerHTML = "Index of " + window.location.pathname;
+var path = window.location.pathname;
+var href= [ "<a href='/'><em>(root)</em></a> /" ];
+var papart = path.trim().split("/");
+var count = papart.length -2;
+
+if (count > 0) {
+  let regex = '';
+  for (var i = 1; i <= count; i++) {
+    regex = new RegExp('.*/' + papart[i] + '/');
+    href[i] = "<a href='" + path.match(regex) + "'>" + papart[i] + "</a> /";
+  }
+}
+
+document.getElementById('title').innerHTML = "Index of " + path;
+document.getElementById('path').innerHTML = "Index of " + href.join(" ");
 </script>
 </html>
