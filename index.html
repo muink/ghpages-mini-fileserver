@@ -27,16 +27,81 @@ tr:nth-child(even) {
 <table style="width:100%">
   <tr>
     <th>Name</th>
-    <th>Last modified</th>
+    <th>Date</th>
   </tr>
-        {% for res in site.static_files %}
-          {% if res.path contains 'resources' %}
-            <tr>
-              <td><a class="post-link" href="{{ res.path | prepend: site.baseurl }}">{{ res.path | remove:'/resources/' }}</a></td>
-              <td>{{ res.modified_time | date: "%-d %b, %Y" }}</td>
-            </tr>
-          {% endif %}
-        {% endfor %}
+
+<!-- ref: <github.com/bryango/resources> start -->
+{%- for res in site.pages -%}
+
+<!-- ignore /README* -->
+  {%- assign checkStart = res.url | split: '/README' -%}
+  {%- if checkStart[0] == '' -%}
+    {%- continue -%}
+  {%- endif -%}
+<!-- ignore / -->
+  {%- assign checkStart = res.url | split: page.url -%}
+  {%- if checkStart[0] != '' -%}
+    {%- continue -%}
+  {%- endif -%}
+<!-- ignore /*/ -->
+  {%- assign target = res.url | remove_first: page.url -%}
+  {%- if target contains '/' -%}
+    {%- continue -%}
+  {%- endif -%}
+<!-- keep /*
+  {%- assign name = res.title | remove_first: folder -%}
+  {%- if name == '' -%}
+    {%- assign name = 'index.html' -%}
+  {%- endif -%}
+
+  <tr>
+    <td><a class="post-link" href="{{ target }}">{{ name }}</a></td>
+    <td>{{ res.modified_time | date: "%a %b %e %T %Y" }}</td>
+  </tr>
+ -->
+{% endfor %}
+
+{%- for res in site.pages -%}
+
+<!-- ignore /assets/ -->
+  {%- assign checkStart = res.url | split: '/assets/' -%}
+  {%- if checkStart[0] == '' -%}
+    {%- continue -%}
+  {%- endif -%}
+<!-- ignore / -->
+  {%- assign checkStart = res.url | split: page.url -%}
+  {%- if checkStart[0] != '' -%}
+    {%- continue -%}
+  {%- endif -%}
+<!-- keep /*/ -->
+  {%- assign target = res.url | remove_first: page.url -%}
+  {%- if target contains '/' -%}
+    {%- assign folder_new = target | split: '/' | first -%}
+  {%- else -%}
+    {%- continue -%}
+  {%- endif -%}
+<!-- register new subdir -->
+  {%- if folder_new != folder -%}
+    {%- assign folder = folder_new -%}
+    <tr>
+      <td><a class="post-link" href="{{ folder | append: '/' }}" >{{ folder | append: '/' }}</a></td>
+      <td></td>
+    </tr>
+  {%- endif -%}
+<!-- keep /*/*
+  {%- assign name = res.title | remove_first: folder | remove_first: '/' -%}
+  {%- if name == '' -%}
+    {%- assign name = 'index.html' -%}
+  {%- endif -%}
+
+  <tr>
+    <td><a class="post-link" href="{{ target }}">{{ name }}</a></td>
+    <td>{{ res.modified_time | date: "%a %b %e %T %Y" }}</td>
+  </tr>
+ -->
+{% endfor %}
+<!-- ref: <github.com/bryango/resources> end -->
+
 </table>
 ghpages fileserver v1.0
 © Karlheinz Niebuhr
