@@ -53,7 +53,7 @@ if (count > 0) {
   let regex = '';
   for (var i = 1; i <= count; i++) {
     regex = new RegExp('.*/' + papart[i] + '/');
-    href[i] = "<a href='" + path.match(regex) + "'>" + papart[i] + "</a> /";
+    href[i] = "<a href='" + encodeURI(path.match(regex)) + "'>" + papart[i] + "</a> /";
   }
 }
 
