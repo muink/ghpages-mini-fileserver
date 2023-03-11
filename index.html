@@ -1,28 +1,9 @@
 ---
-
+layout: base
 ---
-<html>
-<head>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+{{ content }}
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-{% seo %}
-<title id="title"></title>
-</head>
 <body>
 <h1 id="path"></h1>
 <table style="width:100%">
@@ -126,4 +107,3 @@ if (count > 0) {
 document.getElementById('title').innerHTML = "Index of " + path;
 document.getElementById('path').innerHTML = "Index of " + href.join(" ");
 </script>
-</html>
