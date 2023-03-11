@@ -15,7 +15,7 @@ defaults:
     scope:
       path: "resources"
     values:
-      layout: "sub"
+      layout: "files"
 
 # defaults for github pages
 # ... see: <https://docs.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll>

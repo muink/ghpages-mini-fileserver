@@ -30,14 +30,9 @@ layout: base
   {%- if target contains '/' -%}
     {%- continue -%}
   {%- endif -%}
-<!-- keep /*
-  {%- assign name = res.title | remove_first: folder -%}
-  {%- if name == '' -%}
-    {%- assign name = 'index.html' -%}
-  {%- endif -%}
-
+<!-- 
   <tr>
-    <td><a class="post-link" href="{{ target }}">{{ name }}</a></td>
+    <td><a class="post-link" href="{{ target }}">{{ target }}</a></td>
     <td>{{ res.modified_time | date: "%a %b %e %T %Y" }}</td>
   </tr>
  -->
@@ -70,14 +65,9 @@ layout: base
       <td></td>
     </tr>
   {%- endif -%}
-<!-- keep /*/*
-  {%- assign name = res.title | remove_first: folder | remove_first: '/' -%}
-  {%- if name == '' -%}
-    {%- assign name = 'index.html' -%}
-  {%- endif -%}
-
+<!-- 
   <tr>
-    <td><a class="post-link" href="{{ target }}">{{ name }}</a></td>
+    <td><a class="post-link" href="{{ target }}">{{ target }}</a></td>
     <td>{{ res.modified_time | date: "%a %b %e %T %Y" }}</td>
   </tr>
  -->
