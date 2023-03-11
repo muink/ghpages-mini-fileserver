@@ -89,21 +89,3 @@ ghpages fileserver v1.0
 © Karlheinz Niebuhr
 
 </body>
-
-<script>
-var path = window.location.pathname;
-var href= [ "<a href='/'><em>(root)</em></a> /" ];
-var papart = path.trim().split("/");
-var count = papart.length -2;
-
-if (count > 0) {
-  let regex = '';
-  for (var i = 1; i <= count; i++) {
-    regex = new RegExp('.*/' + papart[i] + '/');
-    href[i] = "<a href='" + encodeURI(path.match(regex)) + "'>" + papart[i] + "</a> /";
-  }
-}
-
-document.getElementById('title').innerHTML = "Index of " + path;
-document.getElementById('path').innerHTML = "Index of " + href.join(" ");
-</script>
