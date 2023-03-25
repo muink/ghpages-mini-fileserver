@@ -21,7 +21,7 @@ defaults:
 # ... see: <https://docs.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll>
 
 lsi: false
-safe: true
+safe: false
 highlighter: rouge
 gist:
   noscript: false
