@@ -1,8 +1,11 @@
 # ref: <github.com/bryango/resources>
 encoding : utf-8
 plugins:
+  - jekyll-default-layout
+  - jekyll-optional-front-matter
   - jekyll-readme-index
   - jekyll-seo-tag
+  - kramdown-parser-gfm
 
 readme_index:
   with_frontmatter: true
