@@ -5,6 +5,7 @@ plugins:
   - jekyll-optional-front-matter
   - jekyll-readme-index
   - jekyll-seo-tag
+  - jekyll-file-size
   - kramdown-parser-gfm
 
 readme_index:
